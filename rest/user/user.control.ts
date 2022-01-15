@@ -9,10 +9,7 @@ import {
 } from "@nestjs/common";
 import { ApiProperty } from "@nestjs/swagger";
 import { UserService } from "../../database/sql.user.service";
-import {
-  StatusFailedFilter,
-  StatusFailed,
-} from "../../errors/ResponseError.handler";
+import { StatusFailed } from "../../errors/ResponseError.handler";
 export namespace UserDTO {
   export class LoginInput {
     @ApiProperty()
@@ -50,7 +47,6 @@ export class UserController {
   service!: UserService;
 
   @Post("/login")
-  @UseFilters(StatusFailedFilter)
   async login(@Body() input: UserDTO.LoginInput): Promise<UserDTO.LoginOutput> {
     try {
       const token = await this.service.login(input.id, input.pw);
@@ -86,7 +82,12 @@ export class UserController {
         id: myself.id,
       };
     } catch {
-      throw StatusFailed.fail("1004", { token: token });
+      // throw StatusFailed.fail("1004", { token: token });
+      throw StatusFailed.fail("1005", {
+        context: {
+          a: 1,
+        },
+      });
     }
   }
 }
