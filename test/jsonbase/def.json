@@ -1,4 +1,0 @@
-{
-  "E0001": "hello ${    yourname }, my name is ${myname}",
-  "E0002": "username  ${    name } is not exist"
-}

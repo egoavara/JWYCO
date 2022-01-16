@@ -1,4 +1,4 @@
-import { PARAMS } from "test/common";
+import { PARAMS } from "src/test/common";
 
 enum ECode {
   E0001 = "hello ${    yourname }, my name is ${myname}",

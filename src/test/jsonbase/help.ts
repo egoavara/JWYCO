@@ -1,11 +1,19 @@
-import { PARAMS } from "test/common";
-import {default as jsonerror} from "./def.json"
+import { PARAMS } from "src/test/common";
+import jsonerror from "./def.json";
+
+type First<T> = T extends infer F | infer O
+  ? F extends string
+    ? F
+    : ""
+  : T extends string
+  ? T
+  : "";
 
 type Def = typeof jsonerror;
 type DefKeys = keyof Def;
 type DefType = {
   [K in DefKeys]: {
-    Params: PARAMS<Def[K]>;
+    Params: PARAMS<First<keyof Def[K]>>;
   };
 };
 

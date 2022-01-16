@@ -5,8 +5,8 @@
   "main": "./dist/index.ts",
   "scripts": {
     "build": "del-cli ./dist & tsc",
-    "start": "ts-node index.ts",
-    "start-errors": "ts-node ./test/help.ts"
+    "start": "nest build --webpack --webpackPath webpack-hmr.config.js --watch",
+    "start-errors": "ts-node ./src/test/injsonbase/help.ts"
   },
   "author": "egoavara",
   "license": "MIT",
@@ -22,6 +22,12 @@
   },
   "devDependencies": {
     "del-cli": "^4.0.1",
-    "unplugin-json-dts": "^1.1.0"
+    "json-dts-generator": "^1.0.0",
+    "run-script-webpack-plugin": "^0.0.11",
+    "ts-loader": "^9.2.6",
+    "unplugin-json-dts": "^1.1.0",
+    "webpack": "^5.66.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-node-externals": "^3.0.0"
   }
 }
